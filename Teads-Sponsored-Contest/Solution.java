@@ -89,29 +89,6 @@ public class Solution {
 	    return found;
 	}
 	
-	static Node FindNode(Node currNode, int value){
-	    
-	    if(currNode.value == value){
-	        return currNode;   
-	    }
-	    else if(currNode.connections.size() == 0){
-	        return null;
-	    }
-	    
-	    if(visited[currNode.value] == 1){
-			return null;
-		}
-	    visited[currNode.value] = 1;
-	    Node found = null;
-	    for(int i=0;i<currNode.connections.size();i++){
-	        found = FindNode(currNode.connections.get(i), value);
-	        if(found != null){
-	            break;
-	        }
-	    }
-	    return found;
-	}
-	
 }
 
 class Node{
