@@ -5,33 +5,23 @@ public class Solution {
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
         String MESSAGE = in.nextLine();
-        String[] first = MESSAGE.split("");
-        String[] final1 = new String[first.length*7];
-        int cnt=0;
-        for(int i=0;i<first.length;i++){
-            byte[] bytes = first[i].getBytes();
-            StringBuilder binary = new StringBuilder();
-            for (byte b : bytes)
-            {
-            	int val = b;
-            	for (int j = 0; j < 8;j++)
-            	{
-            		binary.append((val & 128) == 0 ? 0 : 1);
-            		val <<= 1;
+        char[] chars = MESSAGE.toCharArray();
+        String res = "";
+        for (int i = 0; i < chars.length; i++) {
+            String temp = Integer.toBinaryString(chars[i]);
+            if(temp.length() < 7){
+            	String temp1 = "";
+            	for(int j=temp.length();j<7;j++){
+            		temp1 += "0";
             	}
-            	binary.append(' ');
+            	temp = temp1 + temp;
             }
-            String test= binary.toString();
-            String[] parts = test.split("");
-            for(int k=0;k<7;k++){
-            	final1[cnt+k]=parts[k+1];
-            }
-        cnt+=7;
+            res += temp;
         }
         boolean isOne = false;
-        for(int i=0;i<final1.length;i++){
+        for(int i=0;i<res.length();i++){
         	if(i==0){
-        		if(final1[i].equals("1")){
+        		if(res.substring(i, i+1).equals("1")){
         			System.out.print("0 0");
         			isOne = true;
         		}
@@ -41,7 +31,7 @@ public class Solution {
         		}
         	}
         	else{
-        		if(final1[i].equals("1")){
+        		if(res.substring(i, i+1).equals("1")){
         			if(isOne){
         				System.out.print("0");
         			}
