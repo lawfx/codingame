@@ -29,25 +29,38 @@ public class Solution {
         cnt+=7;
         }
         cnt=0;
-        while(cnt<first.length*7){
-            if(final1[cnt].equals("0")){
-                System.out.print("00 0");
-                cnt++;
-                while(final1[cnt].equals("0")){
-                    System.out.print("0");
-                    cnt++;
-                }
-                System.out.print(" ");
-            }
-            else{
-                System.out.print("0 0");
-                cnt++;
-                while(final1[cnt].equals("1")){
-                    System.out.print("0");
-                    cnt++;
-                }
-                System.out.print(" ");
-            }
+        boolean isOne = false;
+        for(int i=0;i<final1.length;i++){
+        	if(i==0){
+        		if(final1[i].equals("1")){
+        			System.out.print("0 0");
+        			isOne = true;
+        		}
+        		else{
+        			System.out.print("00 0");
+        			isOne = false;
+        		}
+        	}
+        	else{
+        		if(final1[i].equals("1")){
+        			if(isOne){
+        				System.out.print("0");
+        			}
+        			else{
+        				isOne = true;
+        				System.out.print(" 0 0");
+        			}
+        		}
+        		else{
+        			if(isOne){
+        				isOne = false;
+        				System.out.print(" 00 0");
+        			}
+        			else{
+        				System.out.print("0");
+        			}
+        		}
+        	}
         }
     }
 }
