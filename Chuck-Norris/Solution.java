@@ -28,7 +28,6 @@ public class Solution {
             }
         cnt+=7;
         }
-        cnt=0;
         boolean isOne = false;
         for(int i=0;i<final1.length;i++){
         	if(i==0){
